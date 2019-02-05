@@ -15,8 +15,19 @@
 		<title>Proyecto Spring 2EVA - Luis M. Barquillo</title>
 	</head>
 	<body>
-		<button class="btn btn-primary">boton</button>
-		
+		<div class="container">
+			<div class="row">
+				<div class="col-4 offset-4">
+					<h1>Menú principal</h1>
+					<form method="GET" action="menu">
+						<button type="submit" class="btn btn-primary" name="action" value="regiones">Listar regiones</button><br/>
+						<button type="submit" class="btn btn-primary" name="action" value="oficinas">Listar oficinas</button><br/>
+						<button type="submit" class="btn btn-primary" name="action" value="representantes">Gestionar representantes</button><br/>
+					</form>					
+				</div>
+			</div>
+		</div>
+				
 		<!-- JavaScript -->
 		<script src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/jquery.color-2.1.2.js"></script>

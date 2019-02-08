@@ -19,11 +19,9 @@
 			<div class="row">
 				<div class="col-4 offset-4">
 					<h1>Menú principal</h1>
-					<form method="GET" action="menu">
-						<button type="submit" class="btn btn-primary" name="action" value="regiones">Listar regiones</button><br/>
-						<button type="submit" class="btn btn-primary" name="action" value="oficinas">Listar oficinas</button><br/>
-						<button type="submit" class="btn btn-primary" name="action" value="representantes">Gestionar representantes</button><br/>
-					</form>					
+					<a href="regiones"><button class="btn btn-primary">Listar regiones</button></a><br/>
+					<a href="oficinas"><button class="btn btn-primary">Listar oficinas</button></a><br/>
+					<a href="representantes"><button class="btn btn-primary">Gestionar representantes</button></a><br/>
 				</div>
 			</div>
 		</div>

@@ -110,13 +110,6 @@
 			<version>1.2</version>
 		</dependency>
 
-		<!-- MySQL añadido por dependencias de Maven -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.14</version>
-		</dependency>
-
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>

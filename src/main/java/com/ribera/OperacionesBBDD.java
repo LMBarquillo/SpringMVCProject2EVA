@@ -11,15 +11,15 @@ import java.util.List;
 import com.ribera.modelos.Regiones;
 
 public class OperacionesBBDD {
-	private final String CONN = "jdbc:mysql://localhost:3306/ejercicio2eva?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"; 
+	private final String CONN = "jdbc:mysql://localhost:3306/ejercicio2eva"; 
 	
 	private Connection getConexion() {
 		Connection conexion = null;
 		try {
-			// Class.forName("com.mysql.jdbc.Driver");
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 			conexion = DriverManager.getConnection(CONN, "root", "");
 		} catch (ClassNotFoundException cn) {
+			
 			System.out.println("ERROR DRIVER. " + cn.getMessage());
 		} catch (SQLException e) {
 			System.out.println("ERROR CONEXIÓN. " + e.getMessage());
@@ -27,9 +27,7 @@ public class OperacionesBBDD {
 		return conexion;
 	}
 	
-	public List<Regiones> getRegiones() {
-		List<Regiones> regiones = new ArrayList<Regiones>();
-		
+	public void getRegiones(List<Regiones> regiones) {		
 		try {	
 			Connection con = getConexion();
 			
@@ -45,12 +43,8 @@ public class OperacionesBBDD {
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		
-		return regiones;
-	}
-
-	
+		}		
+	}	
 	
 	
 }

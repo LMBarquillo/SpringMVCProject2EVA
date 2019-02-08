@@ -18,10 +18,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<h1>Listado de Regiones</h1>
+					<h1>Listado de Oficinas</h1>
 				</div>
 			</div>
-			<c:forEach items="${regionesList}" var="region">
+			<c:forEach items="${oficinasList}" var="region">
 				<div class="row">
 					<div class="col-3 offset-3">
 						<c:out value="${region.getCodRegion()}" />

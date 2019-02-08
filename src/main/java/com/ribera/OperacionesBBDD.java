@@ -27,7 +27,8 @@ public class OperacionesBBDD {
 		return conexion;
 	}
 	
-	public void getRegiones(List<Regiones> regiones) {		
+	public List<Regiones> getRegiones() {
+		List<Regiones> regiones = new ArrayList<Regiones>();
 		try {	
 			Connection con = getConexion();
 			
@@ -41,10 +42,15 @@ public class OperacionesBBDD {
 			
 			sentencia.close();
 			con.close();
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}		
+		}	
+		return regiones;
 	}	
+	
+	
 	
 	
 }

@@ -23,10 +23,10 @@
 			</div>
 			<c:forEach items="${regionesList}" var="region">
 				<div class="row">
-					<div class="col-3 offset-3">
+					<div class="col-2 offset-4">
 						<c:out value="${region.getCodRegion()}" />
 					</div>
-					<div class="col-3 offset-3">
+					<div class="col-2">
 						<c:out value="${region.getNombreRegion()}" />
 					</div>
 				</div>

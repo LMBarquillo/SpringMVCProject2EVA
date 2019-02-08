@@ -21,13 +21,22 @@
 					<h1>Listado de Oficinas</h1>
 				</div>
 			</div>
-			<c:forEach items="${oficinasList}" var="region">
+			<c:forEach items="${oficinasList}" var="oficina">
 				<div class="row">
-					<div class="col-3 offset-3">
-						<c:out value="${region.getCodRegion()}" />
+					<div class="col-1">
+						<c:out value="${oficina.getOficina()}" />
 					</div>
-					<div class="col-3 offset-3">
-						<c:out value="${region.getNombreRegion()}" />
+					<div class="col-3">
+						<c:out value="${oficina.getCiudad()}" />
+					</div>
+					<div class="col-3">
+						<c:out value="${oficina.getRegion()}" />
+					</div>
+					<div class="col-1">
+						<c:out value="${oficina.getNumRepresentantes()}" />
+					</div>
+					<div class="col-4">
+						<c:out value="${oficina.getDirector()}" />
 					</div>
 				</div>
 			</c:forEach>

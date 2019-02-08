@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ribera.modelos.Oficinas;
+import com.ribera.modelos.OficinasData;
 import com.ribera.modelos.Regiones;
 
 @Controller
@@ -32,9 +34,8 @@ public class HomeController {
 	
 	@RequestMapping(value = "/oficinas", method = RequestMethod.GET)
 	public String verOficinas(Model model) {
-		
-		
-		
+		List<OficinasData> oficinas = bbdd.getOficinasData();
+		model.addAttribute("oficinasList", oficinas);
 		return "oficinas";
 	}
 	

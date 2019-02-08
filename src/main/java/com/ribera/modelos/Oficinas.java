@@ -1,5 +1,7 @@
 package com.ribera.modelos;
 
+import java.util.List;
+
 public class Oficinas {
 	private int oficina;
 	private String ciudad;
@@ -57,5 +59,5 @@ public class Oficinas {
 	public void setVentas(float ventas) {
 		this.ventas = ventas;
 	}
-	
+		
 }

@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.ribera.modelos.OficinasData;
 import com.ribera.modelos.Regiones;
+import com.ribera.modelos.RegionesData;
 
 /**
  * Clase controladora de BBDD
@@ -32,17 +33,27 @@ public class OperacionesBBDD {
 		return conexion;
 	}
 	
-	public List<Regiones> getRegiones() {
-		List<Regiones> regiones = new ArrayList<Regiones>();
+	public List<RegionesData> getRegionesData() {
+		List<RegionesData> regiones = new ArrayList<RegionesData>();
 		try {	
 			Connection con = getConexion();
 			
-			String query = "SELECT * FROM regiones";
+			String query = "SELECT regiones.COD_REGION, regiones.NOMBRE_RE, COUNT(oficinas.oficina) AS OFICINAS, SUM(oficinas.TOTAL_VENTAS) AS VENTAS " + 
+					"FROM regiones " + 
+					"LEFT JOIN oficinas ON regiones.cod_region = oficinas.cod_region " + 
+					"GROUP BY regiones.cod_region, regiones.nombre_re";
+			
 			Statement statement = con.createStatement();
 			ResultSet result = statement.executeQuery(query);
 			
 			while(result.next()) {
-				regiones.add(new Regiones(result.getInt("COD_REGION"), result.getString("NOMBRE_RE")));
+				RegionesData region = new RegionesData();
+				region.setCodRegion(result.getInt("COD_REGION"));
+				region.setNombre(result.getString("NOMBRE_RE"));
+				region.setNumOficinas(result.getInt("OFICINAS"));
+				region.setTotalVentas(result.getFloat("VENTAS"));
+				
+				regiones.add(region);
 			}
 			
 			statement.close();			
@@ -50,7 +61,7 @@ public class OperacionesBBDD {
 			e.printStackTrace();
 		}	
 		return regiones;
-	}	
+	}
 	
 	public List<OficinasData> getOficinasData() {
 		List<OficinasData> oficinas = new ArrayList<OficinasData>();

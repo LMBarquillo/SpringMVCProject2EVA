@@ -21,13 +21,37 @@
 					<h1>Listado de Regiones</h1>
 				</div>
 			</div>
+			
+			<!-- encabezados -->
+			<div class="row">
+				<div class="col-2">
+					Cód.Región
+				</div>
+				<div class="col-3">
+					Nombre Región
+				</div>
+				<div class="col-2">
+					Núm. Oficinas
+				</div>
+				<div class="col-2">
+					Total Ventas
+				</div>
+			</div>
+			
+			<!-- filas -->
 			<c:forEach items="${regionesList}" var="region">
 				<div class="row">
-					<div class="col-2 offset-4">
+					<div class="col-2">
 						<c:out value="${region.getCodRegion()}" />
 					</div>
+					<div class="col-3">
+						<c:out value="${region.getNombre()}" />
+					</div>
 					<div class="col-2">
-						<c:out value="${region.getNombreRegion()}" />
+						<c:out value="${region.getNumOficinas()}" />
+					</div>
+					<div class="col-2">
+						<c:out value="${region.getTotalVentas()}" />
 					</div>
 				</div>
 			</c:forEach>

@@ -21,6 +21,27 @@
 					<h1>Listado de Oficinas</h1>
 				</div>
 			</div>
+			
+			<!-- encabezados -->
+			<div class="row">
+				<div class="col-1">
+					Cód.Oficina
+				</div>
+				<div class="col-3">
+					Ciudad
+				</div>
+				<div class="col-3">
+					Región
+				</div>
+				<div class="col-1">
+					Núm.Rep
+				</div>
+				<div class="col-4">
+					Director
+				</div>
+			</div>
+			
+			<!-- filas -->
 			<c:forEach items="${oficinasList}" var="oficina">
 				<div class="row">
 					<div class="col-1">

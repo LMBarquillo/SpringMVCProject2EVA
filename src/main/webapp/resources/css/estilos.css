@@ -3,3 +3,6 @@
 	width: 25px;
 	height: 25px;
 }
+.pull-right {
+	float: right;
+}

@@ -22,6 +22,12 @@
 					<h1>Gestión de representantes</h1>
 				</div>
 			</div>
+			
+			<div class="row">
+				<div class="col-12">
+					<a href="nuevo"><button class="btn btn-success pull-right"><i class="fas fa-plus"></i>&nbsp;Añadir nuevo representante</button></a>
+				</div>
+			</div>
 
 			<!-- encabezados -->
 			<div class="row">
@@ -76,8 +82,8 @@
 						<c:out value="${repVentas.getImpVentas()}" />
 					</div>
 					<div class="col-2">
-						<button class="btn btn-primary btn-mini"><i class="fas fa-pencil-alt"></i></button>
-						<button class="btn btn-danger btn-mini"><i class="fas fa-times"></i></button>
+						<a href="editar?id=${repVentas.getNumRep()}"><button class="btn btn-primary btn-mini"><i class="fas fa-pencil-alt"></i></button></a>
+						<a href="eliminar?id=${repVentas.getNumRep()}"><button class="btn btn-danger btn-mini"><i class="fas fa-times"></i></button></a>
 					</div>
 				</div>
 			</c:forEach>

@@ -2,15 +2,18 @@ package com.ribera;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ribera.modelos.Oficinas;
 import com.ribera.modelos.OficinasData;
 import com.ribera.modelos.Regiones;
 import com.ribera.modelos.RegionesData;
+import com.ribera.modelos.RepVentas;
 
 /**
  * Clase controladora de BBDD
@@ -96,5 +99,62 @@ public class OperacionesBBDD {
 		}	
 		return oficinas;
 	}	
+	
+	public List<RepVentas> getRepVentas() {
+		List<RepVentas> representantes = new ArrayList<RepVentas>();
+		
+		try {	
+			Connection con = getConexion();
+			
+			String query = "SELECT * FROM repventas";
+
+			Statement statement = con.createStatement();
+			ResultSet result = statement.executeQuery(query);
+			
+			while(result.next()) {
+				RepVentas repVentas = new RepVentas();
+				repVentas.setNumRep(result.getInt("NUMERO_REP"));
+				repVentas.setNombre(result.getString("NOMBRE"));
+				repVentas.setEdad(result.getInt("EDAD"));
+				repVentas.setNumVentas(result.getInt("NUM_VENTAS"));
+				repVentas.setImpVentas(result.getFloat("IMP_VENTAS"));
+				
+				// Obtenemos su oficina
+				String queryOficina = "SELECT * FROM oficinas WHERE oficina = ?";
+				PreparedStatement statementOficina = con.prepareStatement(queryOficina);
+				statementOficina.setInt(1, result.getInt("OFICINA_REP"));
+				ResultSet resultOficina = statementOficina.executeQuery();
+				if(resultOficina.next()) {
+					Oficinas oficina = new Oficinas();
+					// Solo sacamos los datos que nos interesan, los que mostraremos o usaremos para modificar
+					oficina.setOficina(result.getInt("OFICINA_REP"));
+					oficina.setCiudad(resultOficina.getString("CIUDAD"));
+					
+					repVentas.setOficina(oficina);
+				}
+				
+				// Obtenemos su director
+				String queryDirector = "SELECT * FROM repventas WHERE numero_rep = ?";
+				PreparedStatement statementDirector = con.prepareStatement(queryDirector);
+				statementDirector.setInt(1, result.getInt("DIRECTOR"));
+				ResultSet resultDirector = statementDirector.executeQuery();
+				if(resultDirector.next()) {
+					RepVentas director = new RepVentas();
+					director.setNumRep(result.getInt("DIRECTOR"));
+					director.setNombre(resultDirector.getString("NOMBRE"));
+					
+					repVentas.setDirector(director);
+				}
+				
+				representantes.add(repVentas);
+			}
+			
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		return representantes;
+	}
+	
 	
 }

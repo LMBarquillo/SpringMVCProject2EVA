@@ -49,19 +49,19 @@ public class RepVentas {
 	public Oficinas getOficina() {
 		return oficina;
 	}
-	
+
 	public void setOficina(Oficinas oficina) {
 		this.oficina = oficina;
 	}
-	
+
 	public RepVentas getDirector() {
 		return director;
 	}
-	
+
 	public void setDirector(RepVentas director) {
 		this.director = director;
 	}
-	
+
 	public int getNumVentas() {
 		return numVentas;
 	}

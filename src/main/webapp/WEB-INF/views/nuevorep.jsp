@@ -9,9 +9,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.structure.min.css">		
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.theme.min.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/estilos.css">
 		
 		<title>Proyecto Spring 2EVA - Luis M. Barquillo</title>
@@ -25,14 +22,14 @@
 			</div>
 			
 			<miform:form method="POST" action="/nuevorep" modelAttribute="nuevoRep">
-			<div class="row">				
+			<div class="row">
 				<div class="col-4">
 					<label>Nombre:</label><br/>
-					<miform:input type="text" name="nombre" placeholder="Nombre" path="nombre" />
+					<miform:input type="text" name="nombre" placeholder="Nombre" path="nombre" required/>
 				</div>
 				<div class="col-2">
 					<label>Edad:</label><br/>
-					<miform:input type="number" name="edad" placeholder="Edad" path="edad" />
+					<miform:input type="number" name="edad" placeholder="Edad" path="edad" required/>
 				</div>
 				<div class="col-3">
 					<label>Oficina:</label><br/>
@@ -49,23 +46,20 @@
 					</miform:select>
 				</div>
 			</div>
-			</miform:form>
-			
 			
 			<div class="row">
 				<div class="col-6">
-					<button class="btn btn-danger"><i class="fas fa-times"></i>&nbsp;Cancelar</button>
+					<a href="representantes"></a><button type="button" class="btn btn-danger"><i class="fas fa-times"></i>&nbsp;Cancelar</button></a>
 				</div>
 				<div class="col-6">					
-					<button class="btn btn-success pull-right"><i class="fas fa-check"></i>&nbsp;Aceptar</button>
+					<button type="submit" class="btn btn-success pull-right"><i class="fas fa-check"></i>&nbsp;Aceptar</button>
 				</div>
 			</div>
+			</miform:form>
 		</div>
 				
 		<!-- JavaScript -->
 		<script src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.color-2.1.2.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
 	</body>

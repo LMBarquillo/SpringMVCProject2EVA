@@ -2,6 +2,7 @@ package com.ribera;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,6 +13,7 @@ import java.util.Map;
 
 import com.ribera.modelos.OficinasData;
 import com.ribera.modelos.RegionesData;
+import com.ribera.modelos.RepVentas;
 import com.ribera.modelos.RepVentasData;
 
 /**
@@ -132,6 +134,27 @@ public class OperacionesBBDD {
 		}	
 		return representantes;
 	}	
+	
+	public void insertRepVentas(RepVentas repVentas) {
+		try {	
+			Connection con = getConexion();
+			
+			// La id se genera automáticamente con el máximo +1. Las ventas de un nuevo representante son 0
+			String query = "INSERT INTO repventas VALUES (SELECT MAX(numero_rep)+1 FROM repventas REP), ?, ?, ?, ?, 0, 0";
+			
+			PreparedStatement statement = con.prepareStatement(query);
+			statement.setString(1, repVentas.getNombre());
+			statement.setInt(2, repVentas.getEdad());
+			statement.setInt(3, repVentas.getOficina() == 0 ? null : repVentas.getOficina());
+			statement.setInt(4, repVentas.getDirector() == 0 ? null : repVentas.getDirector());
+
+			statement.executeUpdate();			
+			
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}			
+	}
 	
 	/**
 	 * Devuelve un Map de oficinas para usar en los Select

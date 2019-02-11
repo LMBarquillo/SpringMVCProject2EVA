@@ -6,3 +6,13 @@
 .pull-right {
 	float: right;
 }
+input, select {
+	width: 100%;
+	border-radius: 5px;
+	border: 1px solid #666;
+	padding: 5px 10px;
+	height: 36px;
+}
+button {
+	margin: 10px 0;
+}

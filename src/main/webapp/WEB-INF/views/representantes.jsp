@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.structure.min.css">		
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.theme.min.css">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" crossorigin="anonymous">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/estilos.css">
 		
 		<title>Proyecto Spring 2EVA - Luis M. Barquillo</title>
@@ -70,10 +70,10 @@
 						<c:out value="${repVentas.getEdad()}" />
 					</div>
 					<div class="col-2">
-						<c:out value="${repVentas.getOficina().getCiudad()}" />
+						<c:out value="${repVentas.getOficina()}" />
 					</div>
 					<div class="col-2">
-						<c:out value="${repVentas.getDirector().getNombre()}" />
+						<c:out value="${repVentas.getDirector()}" />
 					</div>
 					<div class="col-1">
 						<c:out value="${repVentas.getNumVentas()}" />

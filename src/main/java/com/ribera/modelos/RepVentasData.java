@@ -1,24 +1,22 @@
 package com.ribera.modelos;
 
 /**
- * Modelo usado para crear y modificar Representantes. (Oficina y director son integers con las claves externas)
+ * Modelo usado para la lista de Representantes. (Oficina y director son String)
  * @author Luismi
  */
-public class RepVentas {
+public class RepVentasData {	
 	private int numRep;
 	private String nombre;
 	private int edad;
-	private int oficina;
-	private int director;
+	private String oficina;
+	private String director;
 	private int numVentas;
 	private float impVentas;
 	
-	public RepVentas() {
-		super();
+	public RepVentasData() {
 	}
 	
-	public RepVentas(int numRep, String nombre, int edad, int oficina, int director, int numVentas, float impVentas) {
-		super();
+	public RepVentasData(int numRep, String nombre, int edad, String oficina, String director, int numVentas, float impVentas) {
 		this.numRep = numRep;
 		this.nombre = nombre;
 		this.edad = edad;
@@ -27,7 +25,7 @@ public class RepVentas {
 		this.numVentas = numVentas;
 		this.impVentas = impVentas;
 	}
-
+	
 	public int getNumRep() {
 		return numRep;
 	}
@@ -51,23 +49,23 @@ public class RepVentas {
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
-	
-	public int getOficina() {
+
+	public String getOficina() {
 		return oficina;
 	}
-	
-	public void setOficina(int oficina) {
+
+	public void setOficina(String oficina) {
 		this.oficina = oficina;
 	}
-	
-	public int getDirector() {
+
+	public String getDirector() {
 		return director;
 	}
-	
-	public void setDirector(int director) {
+
+	public void setDirector(String director) {
 		this.director = director;
 	}
-	
+
 	public int getNumVentas() {
 		return numVentas;
 	}
@@ -83,7 +81,5 @@ public class RepVentas {
 	public void setImpVentas(float impVentas) {
 		this.impVentas = impVentas;
 	}
-	
-	
 	
 }

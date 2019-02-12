@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="row">
+			<div class="row header">
 				<div class="col-12">
 					<h1>Añadir nuevo Representante de Ventas</h1>
 				</div>
@@ -25,11 +25,11 @@
 			<div class="row">
 				<div class="col-4">
 					<label>Nombre:</label><br/>
-					<miform:input type="text" name="nombre" placeholder="Nombre" path="nombre" required/>
+					<miform:input type="text" name="nombre" placeholder="Nombre" path="nombre" required="true"/>
 				</div>
 				<div class="col-2">
 					<label>Edad:</label><br/>
-					<miform:input type="number" name="edad" placeholder="Edad" path="edad" required/>
+					<miform:input type="number" name="edad" placeholder="Edad" path="edad" required="true"/>
 				</div>
 				<div class="col-3">
 					<label>Oficina:</label><br/>
@@ -49,7 +49,7 @@
 			
 			<div class="row">
 				<div class="col-6">
-					<a href="representantes"></a><button type="button" class="btn btn-danger"><i class="fas fa-times"></i>&nbsp;Cancelar</button></a>
+					<a href="representantes"><button type="button" class="btn btn-danger"><i class="fas fa-times"></i>&nbsp;Cancelar</button></a>
 				</div>
 				<div class="col-6">					
 					<button type="submit" class="btn btn-success pull-right"><i class="fas fa-check"></i>&nbsp;Aceptar</button>

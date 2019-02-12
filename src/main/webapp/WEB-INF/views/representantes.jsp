@@ -14,27 +14,25 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="row">
+			<div class="row header">
 				<div class="col-12">
 					<h1>Gestión de representantes</h1>
 				</div>
 			</div>
 			
-			<div class="row">
-				<div class="col-12">
-					<a href="nuevo"><button class="btn btn-success pull-right"><i class="fas fa-plus"></i>&nbsp;Añadir nuevo representante</button></a>
-				</div>
+			<div class="row right">
+				<a href="nuevo"><button class="btn btn-success pull-right"><i class="fas fa-plus"></i>&nbsp;Añadir nuevo representante</button></a>
 			</div>
 
 			<!-- encabezados -->
-			<div class="row">
-				<div class="col-1">
+			<div class="row table-header">
+				<div class="col-1 center">
 					Num.Rep
 				</div>
 				<div class="col-2">
 					Nombre
 				</div>
-				<div class="col-1">
+				<div class="col-1 right">
 					Edad
 				</div>
 				<div class="col-2">
@@ -43,27 +41,27 @@
 				<div class="col-2">
 					Director
 				</div>
-				<div class="col-1">
+				<div class="col-1 right">
 					Num.Ventas
 				</div>
-				<div class="col-1">
+				<div class="col-1 right">
 					Tot.Ventas
 				</div>
-				<div class="col-2">
+				<div class="col-2 center">
 					Acciones
 				</div>
 			</div>
 			
 			<!-- filas -->
 			<c:forEach items="${repVentasList}" var="repVentas">
-				<div class="row">
-					<div class="col-1">
+				<div class="row table-rows">
+					<div class="col-1 center">
 						<c:out value="${repVentas.getNumRep()}" />
 					</div>
 					<div class="col-2">
 						<c:out value="${repVentas.getNombre()}" />
 					</div>
-					<div class="col-1">
+					<div class="col-1 right">
 						<c:out value="${repVentas.getEdad()}" />
 					</div>
 					<div class="col-2">
@@ -72,13 +70,13 @@
 					<div class="col-2">
 						<c:out value="${repVentas.getDirector()}" />
 					</div>
-					<div class="col-1">
+					<div class="col-1 right">
 						<c:out value="${repVentas.getNumVentas()}" />
 					</div>
-					<div class="col-1">
+					<div class="col-1 right">
 						<c:out value="${repVentas.getImpVentas()}" />
 					</div>
-					<div class="col-2">
+					<div class="col-2 center">
 						<a href="editar?id=${repVentas.getNumRep()}"><button class="btn btn-primary btn-mini"><i class="fas fa-pencil-alt"></i></button></a>
 						<a href="eliminar?id=${repVentas.getNumRep()}"><button class="btn btn-danger btn-mini"><i class="fas fa-times"></i></button></a>
 					</div>
@@ -87,7 +85,7 @@
 			
 			<div class="row">
 				<div class="col-12">
-					<a href="/es">Volver al índice</a>
+					<a href="/es"><button class="btn btn-primary"><i class="fas fa-undo-alt"></i>&nbsp;Volver al índice</button></a>
 				</div>
 			</div>
 		</div>

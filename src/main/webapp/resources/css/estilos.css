@@ -1,7 +1,34 @@
+.header {
+	background-color: darkblue;
+	color: white;
+	padding: 10px;
+	text-align: center;
+	margin: 20px -15px;
+	border-radius: 5px;
+}
+.main-menu {
+	border: 1px solid darkblue;
+	border-radius: 5px;
+	padding: 0 10px;
+}
+.table-header {
+	background-color: #1265ea;
+	color: white; 
+}
+.table-rows:nth-child(even)  {
+	background-color: #ccc;
+}
+.center {
+	text-align: center;
+}
+.right {
+	text-align: right;
+}
 .btn-mini {
 	padding: 0;
 	width: 25px;
 	height: 25px;
+	margin: 3px 0;
 }
 .pull-right {
 	float: right;
@@ -15,4 +42,7 @@ input, select {
 }
 button {
 	margin: 10px 0;
+}
+a:hover {
+	text-decoration: none !important;
 }

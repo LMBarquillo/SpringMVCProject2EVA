@@ -13,12 +13,16 @@
 	</head>
 	<body>
 		<div class="container">
+			<div class="row header">
+				<div class="col-12">
+					<h1>Menú principal</h1>				
+				</div>
+			</div>
 			<div class="row">
-				<div class="col-4 offset-4">
-					<h1>Menú principal</h1>
-					<a href="regiones"><button class="btn btn-primary">Listar regiones</button></a><br/>
-					<a href="oficinas"><button class="btn btn-primary">Listar oficinas</button></a><br/>
-					<a href="representantes"><button class="btn btn-primary">Gestionar representantes</button></a><br/>
+				<div class="col-4 offset-4 main-menu">
+					<a href="regiones"><button class="btn btn-primary btn-block">Listar regiones</button></a>
+					<a href="oficinas"><button class="btn btn-primary btn-block">Listar oficinas</button></a>
+					<a href="representantes"><button class="btn btn-primary btn-block">Gestionar representantes</button></a>
 				</div>
 			</div>
 		</div>

@@ -13,15 +13,15 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="row">
+			<div class="row header">
 				<div class="col-12">
 					<h1>Listado de Oficinas</h1>
 				</div>
 			</div>
 			
 			<!-- encabezados -->
-			<div class="row">
-				<div class="col-1">
+			<div class="row table-header">
+				<div class="col-1 center">
 					Cód.Oficina
 				</div>
 				<div class="col-3">
@@ -30,7 +30,7 @@
 				<div class="col-3">
 					Región
 				</div>
-				<div class="col-1">
+				<div class="col-1 center">
 					Núm.Rep
 				</div>
 				<div class="col-4">
@@ -40,8 +40,8 @@
 			
 			<!-- filas -->
 			<c:forEach items="${oficinasList}" var="oficina">
-				<div class="row">
-					<div class="col-1">
+				<div class="row table-rows">
+					<div class="col-1 center">
 						<c:out value="${oficina.getOficina()}" />
 					</div>
 					<div class="col-3">
@@ -50,7 +50,7 @@
 					<div class="col-3">
 						<c:out value="${oficina.getRegion()}" />
 					</div>
-					<div class="col-1">
+					<div class="col-1 center">
 						<c:out value="${oficina.getNumRepresentantes()}" />
 					</div>
 					<div class="col-4">
@@ -60,8 +60,8 @@
 			</c:forEach>
 			
 			<div class="row">
-				<div class="col-12">
-					<a href="/es">Volver al índice</a>
+				<div class="col-12 center">
+					<a href="/es"><button class="btn btn-primary"><i class="fas fa-undo-alt"></i>&nbsp;Volver al índice</button></a>
 				</div>
 			</div>
 		</div>

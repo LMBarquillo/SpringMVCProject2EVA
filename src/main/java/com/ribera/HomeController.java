@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ribera.modelos.OficinasData;
 import com.ribera.modelos.RegionesData;
@@ -63,12 +64,21 @@ public class HomeController {
 		return "nuevorep";
 	}
 	
+	@RequestMapping(value = "/editar", method = RequestMethod.GET)
+	public String editarRepresentante(Model model, @RequestParam String id) {
+		
+		
+		return "editarep";
+	}
+	
+	@RequestMapping(value = "/eliminar", method = RequestMethod.GET)
+	public String eliminarRepresentante(Model model, @RequestParam String id) {
+		
+		
+		return "confirmarEliminar";
+	}
+	
 	/*
-	@RequestMapping(value = "/employee", method = RequestMethod.GET)
-    public ModelAndView showForm() {
-        return new ModelAndView("employeeHome", "employee", new Employee());
-    }
- 
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
     public String submit(@Valid @ModelAttribute("employee")Employee employee, 
       BindingResult result, ModelMap model) {

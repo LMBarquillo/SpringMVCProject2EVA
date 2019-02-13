@@ -37,6 +37,10 @@ public class OperacionesBBDD {
 		return conexion;
 	}
 	
+	/**
+	 * Devuelve la lista de regiones
+	 * @return
+	 */
 	public List<RegionesData> getRegionesData() {
 		List<RegionesData> regiones = new ArrayList<RegionesData>();
 		try {	
@@ -67,6 +71,10 @@ public class OperacionesBBDD {
 		return regiones;
 	}
 	
+	/**
+	 * Devuelve la lista de oficinas
+	 * @return
+	 */
 	public List<OficinasData> getOficinasData() {
 		List<OficinasData> oficinas = new ArrayList<OficinasData>();
 		
@@ -101,6 +109,10 @@ public class OperacionesBBDD {
 		return oficinas;
 	}	
 	
+	/**
+	 * Devuelve la lista de representantes
+	 * @return
+	 */
 	public List<RepVentasData> getRepVentasData() {
 		List<RepVentasData> representantes = new ArrayList<RepVentasData>();
 		
@@ -155,7 +167,7 @@ public class OperacionesBBDD {
 			statement.setInt(3, repVentas.getOficina());	
 		}
 		if(repVentas.getDirector() == 0) {
-			statement.setNull(3, java.sql.Types.INTEGER);
+			statement.setNull(4, java.sql.Types.INTEGER);
 		} else {
 			statement.setInt(4, repVentas.getDirector());
 		}		
@@ -227,7 +239,7 @@ public class OperacionesBBDD {
 				repVentas.setNumRep(result.getInt("NUMERO_REP"));
 				repVentas.setNombre(result.getString("NOMBRE"));
 				repVentas.setEdad(result.getInt("EDAD"));
-				repVentas.setOficina(result.getInt("OFICINA"));
+				repVentas.setOficina(result.getInt("OFICINA_REP"));
 				repVentas.setDirector(result.getInt("DIRECTOR"));
 				repVentas.setNumVentas(result.getInt("NUM_VENTAS"));
 				repVentas.setImpVentas(result.getFloat("IMP_VENTAS"));

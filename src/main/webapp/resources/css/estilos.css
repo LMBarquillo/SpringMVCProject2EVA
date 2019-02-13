@@ -55,3 +55,6 @@ button {
 a:hover {
 	text-decoration: none !important;
 }
+#nombrerep {
+	font-weight: bold;
+}

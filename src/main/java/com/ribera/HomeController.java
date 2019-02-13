@@ -149,9 +149,14 @@ public class HomeController {
 	 * @return
 	 */
 	@RequestMapping(value = "/eliminar", method = RequestMethod.GET)
-	public String eliminarRepresentante(Model model, @RequestParam String id) {
-		
-		
-		return "confirmarEliminar";
+	public String eliminarRepresentante(Model model, @RequestParam Integer id) {
+		try {
+			bbdd.deleteRepVentas(id);
+			model.addAttribute("mensaje","Se ha eliminado correctamente el representante.");
+			return "confirmar";
+		} catch (SQLException e) {
+			model.addAttribute("mensaje","Se ha producido un error al eliminar el representante: " + e.getMessage());
+			return "error";
+		}
 	}	
 }

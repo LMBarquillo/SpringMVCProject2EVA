@@ -29,7 +29,7 @@
 				</div>
 				<div class="col-8">
 					<label>Nombre:</label><br/>
-					<miform:input type="text" name="nombre" placeholder="Nombre" path="nombre" required="true"/>
+					<miform:input type="text" name="nombre" placeholder="Nombre" path="nombre" required="true" maxlength="15"/>
 				</div>
 				<div class="col-2">
 					<label>Edad:</label><br/>

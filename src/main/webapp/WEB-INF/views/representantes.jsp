@@ -78,7 +78,9 @@
 					</div>
 					<div class="col-2 center">
 						<a href="editar?id=${repVentas.getNumRep()}"><button class="btn btn-primary btn-mini"><i class="fas fa-pencil-alt"></i></button></a>
-						<a href="eliminar?id=${repVentas.getNumRep()}"><button class="btn btn-danger btn-mini"><i class="fas fa-times"></i></button></a>
+						<button class="btn btn-danger btn-mini" data-toggle="modal" data-target="#modal_confirmar" data-name="${repVentas.getNombre()}" data-id="${repVentas.getNumRep()}">
+							<i class="fas fa-times"></i>
+						</button>
 					</div>
 				</div>
 			</c:forEach>
@@ -86,6 +88,23 @@
 			<div class="row">
 				<div class="col-12 center">
 					<a href="/es"><button class="btn btn-primary"><i class="fas fa-undo-alt"></i>&nbsp;Volver al índice</button></a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="modal_confirmar" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<h5 class="modal-title" id="titulo_modal">¡Atención!</h5>
+		      		</div>
+		      		<div class="modal-body">
+		        		<p>&iquest;Está seguro que desea eliminar a <span id="nombrerep"></span>?</p>
+		      		</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+		        		<a id="eliminar_link"><button type="button" class="btn btn-success">Sí</button></a>
+					</div>
 				</div>
 			</div>
 		</div>

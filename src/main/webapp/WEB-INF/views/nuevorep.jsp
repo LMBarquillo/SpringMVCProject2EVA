@@ -26,7 +26,7 @@
 			<div class="row">
 				<div class="col-4">
 					<label>Nombre:</label><br/>
-					<miform:input type="text" name="nombre" placeholder="Nombre" path="nombre" required="true"/>
+					<miform:input type="text" name="nombre" placeholder="Nombre" path="nombre" required="true" maxlength="15"/>
 				</div>
 				<div class="col-2">
 					<label>Edad:</label><br/>
@@ -50,7 +50,7 @@
 			
 			<div class="row">
 				<div class="col-6">
-					<a href="/representantes"><button type="button" class="btn btn-danger"><i class="fas fa-times"></i>&nbsp;Cancelar</button></a>
+					<a href="/es/representantes"><button type="button" class="btn btn-danger"><i class="fas fa-times"></i>&nbsp;Cancelar</button></a>
 				</div>
 				<div class="col-6">					
 					<button type="submit" class="btn btn-success pull-right"><i class="fas fa-check"></i>&nbsp;Aceptar</button>

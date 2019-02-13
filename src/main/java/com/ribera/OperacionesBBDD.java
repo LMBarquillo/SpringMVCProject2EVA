@@ -194,7 +194,7 @@ public class OperacionesBBDD {
 			statement.setInt(3, repVentas.getOficina());	
 		}
 		if(repVentas.getDirector() == 0) {
-			statement.setNull(3, java.sql.Types.INTEGER);
+			statement.setNull(4, java.sql.Types.INTEGER);
 		} else {
 			statement.setInt(4, repVentas.getDirector());
 		}		

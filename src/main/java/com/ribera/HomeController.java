@@ -32,6 +32,11 @@ public class HomeController {
 		return "home";		
 	}
 	
+	/**
+	 * Abre la vista con el listado de regiones
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/regiones", method = RequestMethod.GET)
 	public String verRegiones(Model model) {
 		List<RegionesData> regiones = bbdd.getRegionesData();		
@@ -39,6 +44,10 @@ public class HomeController {
 		return "regiones";
 	}	
 	
+	/** Abre la vista con el listado de oficinas
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/oficinas", method = RequestMethod.GET)
 	public String verOficinas(Model model) {
 		List<OficinasData> oficinas = bbdd.getOficinasData();
@@ -46,6 +55,11 @@ public class HomeController {
 		return "oficinas";
 	}
 	
+	/**
+	 * Abre la vista con el listado de representantes y las acciones a realizar con ellos
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/representantes", method = RequestMethod.GET)
 	public String gestionarRepresentantes(Model model) {
 		List<RepVentasData> repVentas = bbdd.getRepVentasData();
@@ -69,6 +83,12 @@ public class HomeController {
 		return "nuevorep";
 	}
 	
+	/**
+	 * Recibe el modelo del repVentas del formulario, lo inserta en la bbdd y devuelve confirmación o error
+	 * @param repVentas
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/nuevo", method = RequestMethod.POST)
 	public String submitNuevoRep(@ModelAttribute RepVentas repVentas, Model model) {
 		try {
@@ -76,18 +96,58 @@ public class HomeController {
 			model.addAttribute("mensaje","Se ha insertado correctamente el representante.");
 			return "confirmar";
 		} catch (SQLException e) {
-			model.addAttribute("mensaje","Se ha producido un error al insertar el representante.");
+			model.addAttribute("mensaje","Se ha producido un error al insertar el representante: " + e.getMessage());
 			return "error";
 		}		
 	}
 	
+	/**
+	 * Abre la vista con el formulario para modificar un representante existente
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value = "/editar", method = RequestMethod.GET)
-	public String editarRepresentante(Model model, @RequestParam String id) {
+	public String editarRepresentante(Model model, @RequestParam Integer id) {
+		RepVentas repVentas = bbdd.getRepVentasById(id);
+		Map<Integer, String> oficinas = bbdd.getOficinasMap();
+		Map<Integer, String> directores = bbdd.getRepVentasMap();
 		
-		
-		return "editarep";
+		if(repVentas == null) {
+			model.addAttribute("mensaje","El representante que desea modificar no existe.");
+			return "error";
+		} else {
+			model.addAttribute("oficinasMap", oficinas);
+			model.addAttribute("directoresMap", directores);
+			model.addAttribute("editaRep", repVentas);
+			return "editarep";	
+		}		
 	}
 	
+	/**
+	 * Recibe el modelo del repVentas del formulario, lo modifica en la bbdd y devuelve confirmación o error
+	 * @param repVentas
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/editar", method = RequestMethod.POST)
+	public String submitEditarRep(@ModelAttribute RepVentas repVentas, Model model) {
+		try {
+			bbdd.editRepVentas(repVentas);
+			model.addAttribute("mensaje","Se ha modificado correctamente el representante.");
+			return "confirmar";
+		} catch (SQLException e) {
+			model.addAttribute("mensaje","Se ha producido un error al modificar el representante: " + e.getMessage());
+			return "error";
+		}		
+	}
+
+	/**
+	 * Realiza la operación de borrado de un representante a partir de su id
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value = "/eliminar", method = RequestMethod.GET)
 	public String eliminarRepresentante(Model model, @RequestParam String id) {
 		

@@ -85,7 +85,7 @@
 			
 			<div class="row">
 				<div class="col-12 center">
-					<a href="/es"><button class="btn btn-primary">Volver al índice</button></a>
+					<a href="/es"><button class="btn btn-primary"><i class="fas fa-undo-alt"></i>&nbsp;Volver al índice</button></a>
 				</div>
 			</div>
 		</div>

@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="col-12 center">
 					<a href="/es"><button class="btn btn-primary">Volver al índice</button></a>
-					<a href="/representantes"><button class="btn btn-primary">Volver a gestión de representantes</button></a>
+					<a href="/es/representantes"><button class="btn btn-primary">Volver a gestión de representantes</button></a>
 				</div>
 			</div>
 		</div>

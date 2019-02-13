@@ -12,6 +12,9 @@
 .red-header {
 	background-color: red;
 }
+.readonly {
+	background-color: #eee;
+}
 .main-menu {
 	border: 1px solid darkblue;
 	border-radius: 5px;

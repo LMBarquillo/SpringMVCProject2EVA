@@ -6,6 +6,12 @@
 	margin: 20px -15px;
 	border-radius: 5px;
 }
+.green-header {
+	background-color: green;
+}
+.red-header {
+	background-color: red;
+}
 .main-menu {
 	border: 1px solid darkblue;
 	border-radius: 5px;

@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" crossorigin="anonymous">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/estilos.css">
 		
 		<title>Proyecto Spring 2EVA - Luis M. Barquillo</title>

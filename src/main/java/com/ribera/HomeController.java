@@ -1,10 +1,15 @@
 package com.ribera;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,6 +69,18 @@ public class HomeController {
 		return "nuevorep";
 	}
 	
+	@RequestMapping(value = "/nuevo", method = RequestMethod.POST)
+	public String submitNuevoRep(@ModelAttribute RepVentas repVentas, Model model) {
+		try {
+			bbdd.insertRepVentas(repVentas);
+			model.addAttribute("mensaje","Se ha insertado correctamente el representante.");
+			return "confirmar";
+		} catch (SQLException e) {
+			model.addAttribute("mensaje","Se ha producido un error al insertar el representante.");
+			return "error";
+		}		
+	}
+	
 	@RequestMapping(value = "/editar", method = RequestMethod.GET)
 	public String editarRepresentante(Model model, @RequestParam String id) {
 		
@@ -76,20 +93,5 @@ public class HomeController {
 		
 		
 		return "confirmarEliminar";
-	}
-	
-	/*
-    @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
-    public String submit(@Valid @ModelAttribute("employee")Employee employee, 
-      BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error";
-        }
-        model.addAttribute("name", employee.getName());
-        model.addAttribute("contactNumber", employee.getContactNumber());
-        model.addAttribute("id", employee.getId());
-        return "employeeView";
-    }
-    */
-	
+	}	
 }

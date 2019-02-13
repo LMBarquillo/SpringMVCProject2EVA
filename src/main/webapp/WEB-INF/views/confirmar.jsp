@@ -14,55 +14,22 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="row header">
+			<div class="row header green-header">
 				<div class="col-12">
-					<h1>Listado de Oficinas</h1>
+					<h1>Operación realizada correctamente</h1>
 				</div>
 			</div>
 			
-			<!-- encabezados -->
-			<div class="row table-header">
-				<div class="col-1 center">
-					Cód.Oficina
+			<div class="row">
+				<div class="col-12">
+					<div class="alert alert-success" role="alert">${mensaje}</div>
 				</div>
-				<div class="col-3">
-					Ciudad
-				</div>
-				<div class="col-3">
-					Región
-				</div>
-				<div class="col-1 center">
-					Núm.Rep
-				</div>
-				<div class="col-4">
-					Director
-				</div>
-			</div>
-			
-			<!-- filas -->
-			<c:forEach items="${oficinasList}" var="oficina">
-				<div class="row table-rows">
-					<div class="col-1 center">
-						<c:out value="${oficina.getOficina()}" />
-					</div>
-					<div class="col-3">
-						<c:out value="${oficina.getCiudad()}" />
-					</div>
-					<div class="col-3">
-						<c:out value="${oficina.getRegion()}" />
-					</div>
-					<div class="col-1 center">
-						<c:out value="${oficina.getNumRepresentantes()}" />
-					</div>
-					<div class="col-4">
-						<c:out value="${oficina.getDirector()}" />
-					</div>
-				</div>
-			</c:forEach>
+			</div>			
 			
 			<div class="row">
 				<div class="col-12 center">
-					<a href="/es"><button class="btn btn-primary"><i class="fas fa-undo-alt"></i>&nbsp;Volver al índice</button></a>
+					<a href="/es"><button class="btn btn-primary">Volver al índice</button></a>
+					<a href="/representantes"><button class="btn btn-primary">Volver a gestión de representantes</button></a>
 				</div>
 			</div>
 		</div>

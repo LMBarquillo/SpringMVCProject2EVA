@@ -135,25 +135,108 @@ public class OperacionesBBDD {
 		return representantes;
 	}	
 	
-	public void insertRepVentas(RepVentas repVentas) {
-		try {	
-			Connection con = getConexion();
-			
-			// La id se genera automáticamente con el máximo +1. Las ventas de un nuevo representante son 0
-			String query = "INSERT INTO repventas VALUES (SELECT MAX(numero_rep)+1 FROM repventas REP), ?, ?, ?, ?, 0, 0";
-			
-			PreparedStatement statement = con.prepareStatement(query);
-			statement.setString(1, repVentas.getNombre());
-			statement.setInt(2, repVentas.getEdad());
-			statement.setInt(3, repVentas.getOficina() == 0 ? null : repVentas.getOficina());
-			statement.setInt(4, repVentas.getDirector() == 0 ? null : repVentas.getDirector());
+	/**
+	 * Inserta un representante de ventas.
+	 * @param repVentas
+	 * @throws SQLException
+	 */
+	public void insertRepVentas(RepVentas repVentas) throws SQLException {
+		Connection con = getConexion();
+		
+		// La id se genera automáticamente con el máximo +1. Las ventas de un nuevo representante son 0
+		String query = "INSERT INTO repventas VALUES ((SELECT MAX(numero_rep)+1 FROM repventas REP), ?, ?, ?, ?, 0, 0)";
+		
+		PreparedStatement statement = con.prepareStatement(query);
+		statement.setString(1, repVentas.getNombre());
+		statement.setInt(2, repVentas.getEdad());
+		if(repVentas.getOficina() == 0) {
+			statement.setNull(3, java.sql.Types.INTEGER);
+		} else {
+			statement.setInt(3, repVentas.getOficina());	
+		}
+		if(repVentas.getDirector() == 0) {
+			statement.setNull(3, java.sql.Types.INTEGER);
+		} else {
+			statement.setInt(4, repVentas.getDirector());
+		}		
 
-			statement.executeUpdate();			
+		statement.executeUpdate();				
+		statement.close();
+	}
+	
+	/**
+	 * Modifica un representante de ventas
+	 * @param repVentas
+	 * @throws SQLException
+	 */
+	public void editRepVentas(RepVentas repVentas) throws SQLException {
+		Connection con = getConexion();
+		
+		String query = "UPDATE repventas SET nombre = ?, edad = ?, oficina_rep = ?, director = ?, num_ventas = ?, imp_ventas = ? WHERE numero_rep = ?";
+		PreparedStatement statement = con.prepareStatement(query);
+		statement.setString(1, repVentas.getNombre());
+		statement.setInt(2, repVentas.getEdad());
+		if(repVentas.getOficina() == 0) {
+			statement.setNull(3, java.sql.Types.INTEGER);
+		} else {
+			statement.setInt(3, repVentas.getOficina());	
+		}
+		if(repVentas.getDirector() == 0) {
+			statement.setNull(3, java.sql.Types.INTEGER);
+		} else {
+			statement.setInt(4, repVentas.getDirector());
+		}		
+		statement.setInt(5, repVentas.getNumVentas());
+		statement.setFloat(6, repVentas.getImpVentas());
+		statement.setInt(7, repVentas.getNumRep());
+		
+		statement.executeUpdate();
+	}
+	
+	/**
+	 * Elimina un representante de ventas
+	 * @param id
+	 * @throws SQLException 
+	 */
+	public void deleteRepVentas(int id) throws SQLException {
+		Connection con = getConexion();
+		
+		String query = "DELETE FROM repventas WHERE numero_rep = ?";
+		PreparedStatement statement = con.prepareStatement(query);
+		statement.setInt(1, id);
+		
+		statement.executeUpdate();
+	}
+	
+	/**
+	 * Devuelve un repVentas a partir de su ID.
+	 * @param id
+	 * @return
+	 */
+	public RepVentas getRepVentasById(int id) {
+		RepVentas repVentas = null;
+		
+		try {
+			Connection con = getConexion();
+			String query = "SELECT * FROM repventas WHERE numero_rep = ?";
+			PreparedStatement statement = con.prepareStatement(query);
+			statement.setInt(1, id);
+			ResultSet result = statement.executeQuery();
+			if(result.next()) {
+				repVentas = new RepVentas();
+				repVentas.setNumRep(result.getInt("NUMERO_REP"));
+				repVentas.setNombre(result.getString("NOMBRE"));
+				repVentas.setEdad(result.getInt("EDAD"));
+				repVentas.setOficina(result.getInt("OFICINA"));
+				repVentas.setDirector(result.getInt("DIRECTOR"));
+				repVentas.setNumVentas(result.getInt("NUM_VENTAS"));
+				repVentas.setImpVentas(result.getFloat("IMP_VENTAS"));
+			}
 			
-			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}			
+		}	
+		return repVentas;
 	}
 	
 	/**
